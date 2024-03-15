@@ -1,0 +1,40 @@
+/* 変数まとめ */
+
+
+/*サポートブラウザの設定と初期値*/
+$support-ie6: false;
+$support-ie7: false;
+$support-ie8: false;
+$support-ie9: true;
+$support-mozilla: true;
+$support-webkit : true;
+$support-opera  : true;
+
+
+/*色*/
+$font-color__defo: #333333;
+$font-color__link :#000;
+$base-color:#FFFCEC;
+$base-color2:#3a3a3a;
+$base-color3:#f6efed;
+$bg-white__color:#FFFFFF;
+$bg-gray__color:#efefef;
+$bg-gradation__color:-webkit-gradient(linear, left center, right center, from(#a0ffb0), to(#94c5ff));
+$main-color:#EB593C;
+$point-color:#1A8BAC;
+$point-color2:#ddda78;
+$about-2020-bg: #F8F5EE;
+$btnColor: #F8F5EE;
+
+/*スマホの基本幅*/
+$width-sp-base: 90%;
+
+/*pcの基本幅*/
+$width-pc-base: 80%;
+
+/*サイトの横幅*/
+$site-width__max:980px;
+$site-width:680px;
+
+/*imgパス*/
+$img_path:'/wp-content/themes/muso/img';

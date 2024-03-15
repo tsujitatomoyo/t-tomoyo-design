@@ -1,0 +1,1110 @@
+
+/* ---- header ---- */
+
+/* ---- header navi ---- */
+#g-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+  top:0;
+    left: -120%;
+  width:400px;
+    height: 100vh;/*ナビの高さ*/
+  background-color: rgba(235, 89, 60, 0.8);
+    /*動き*/
+  transition: all 0.6s;
+@include media-sp {
+		width:100%;
+	background-color: rgba(235, 89, 60, 1);
+	}
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+    left: 0;
+}
+
+
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width:400px;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+@include media-sp {
+		width:100%;
+	}
+
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+	@include media-sp {
+		left:50%;
+	}
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+  list-style: none;
+    text-align: center; 
+}
+
+#g-nav li a{
+  color: #FFF;
+  text-decoration: none;
+  padding:10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+#g-nav li :hover{
+	color: $point-color;
+	transition: all 0.3s ease-out;
+}
+
+.g-nav_icon{
+	background-image: url(#{$img_path}/common/brain_navi.svg);
+	padding: 3rem;
+    background-size: auto;
+    background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+
+/*========= ボタンのためのCSS ===============*/
+
+
+
+:root {
+    --bar-thickness: 5px;
+}
+
+
+.hamburger_posi{
+	@include media-sp {
+	position: relative;
+	top: -35px;
+		left: -40px;
+	}
+	@media screen and (max-width: 320px) {
+		position: relative;
+		top: -31px;
+		left: -37px;
+	}
+}
+
+
+.hamburger {
+        width: 30px;
+    height: 25px;
+        position: absolute;
+    transition: transform .5s;
+	transform: rotate(45deg);
+	top: 50vh;
+	left: 0;
+	right: 0;
+	    margin: auto;
+	@include media-sp {
+		top: 0;
+		left: 0px;
+		right: auto;
+	}
+}
+
+.hamburger:hover {@include media-pc {transform: rotate(-45deg);
+	margin: auto;left: 0;right: 0;}}
+
+.hamburger div {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #FFF;
+    border-radius: 3px;
+    transform-origin: 50% 50%;
+    transition: .5s .25s;
+}
+
+.hamburger div:nth-child(1){top: 0;    width: 22px;
+    left: 4px;}
+.hamburger div:nth-child(2){top: calc(50% - var(--bar-thickness) / 2);margin: auto;left: 0;right: 0;}
+.hamburger div:nth-child(3){top: calc(100% - var(--bar-thickness));    width: 22px;
+    left: 4px;}
+
+.hamburger:hover div{@include media-pc {top: calc(50% - var(--bar-thickness) / 2);}}
+.hamburger:hover div:nth-child(1){@include media-pc {transform: scale(1, 0);
+  transform-origin: 50% 50%;margin: auto;left: 0;right: 0;}}
+.hamburger:hover div:nth-child(2){@include media-pc {top: calc(50% - var(--bar-thickness) / 2);width: 30px;margin: auto;left: 0;right: 0;}}
+.hamburger:hover div:nth-child(3){@include media-pc {transform: scale(1, 0);
+	transform-origin: 50% 50%;}}
+
+
+.hamburger.header_active{
+	transform: rotate(-45deg);
+	    margin: auto;
+}
+.hamburger.header_active div{top: calc(50% - var(--bar-thickness) / 2);margin: auto;left: 0;right: 0;}
+.hamburger.header_active div:nth-child(1){transform: rotate(45deg);width: 31px;transform: rotate(90deg);background-color: $point-color;transition: .5s .25s;margin: auto;left: 0;right: 0;}
+.hamburger.header_active div:nth-child(2){top: calc(50% - var(--bar-thickness) / 2);width: 30px;margin: auto;left: 0;right: 0;}
+.hamburger.header_active div:nth-child(3){opacity: 0;}
+
+
+
+
+
+
+
+
+.openbtn1{
+  //position:fixed;
+    z-index: 9998;/*ボタンを最前面に*/
+  top:0px;
+  left: 0px;
+  cursor: pointer;
+    width: 50px;
+	transition: all 0.5s ease-out;
+	@include media-sp {
+    top: -50px;
+    left: -50px;
+    position: absolute;
+    transform: rotate(-45deg);
+	}
+	@media screen and (max-width: 320px) {
+		top: -45px;
+    left: -45px;
+	}
+}
+ 
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: #FFF;
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+	&:hover {
+      transform: rotate(-50deg) scale(1, 1) translate(-5px, -32px);
+	}
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+.openbtn1.header_active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+	@include media-sp {
+		transform: translateY(6px) rotate(0deg);
+	}
+}
+
+.openbtn1.header_active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.header_active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+	@include media-sp {
+		transform: translateY(-6px) rotate(85deg);
+	}
+}
+
+.openbtn1 div{
+	position: relative;
+	margin-top: 50vh;
+	transition: all 0.5s ease-out;
+	@include media-sp {
+		margin-top: 0;
+	}
+}
+
+
+
+.g-nav_button{
+  position: fixed;
+  //right: 0;
+  //bottom: 0;
+  cursor: pointer;
+  transition: .5s;
+	    z-index: 9997;
+  
+  /*デフォルトで非表示にする*/
+  opacity: 0;
+  visibility: hidden;
+	display: none;
+}
+
+/*このクラスが付与されると表示する*/
+.header_active{
+  opacity: 1!important;
+  visibility: visible;
+	display: block!important;
+	transition: all 0.5s ease-out;
+}
+
+
+#page-top {
+        position: fixed;
+    //left: 70px;
+    font-size: 77%;
+    z-index: 9998;
+	background-color: $main-color;
+    height: 100vh;
+	left: 0px;
+    top: 0;
+	transition: all 0.5s ease-out;
+	@include media-sp {
+		background-color: transparent;
+		height: 50px;
+		    border-left: 60px solid $main-color;
+    border-top: 60px solid $main-color;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+}
+	@media screen and (max-width: 320px) {
+		border-left: 50px solid $main-color;
+		border-top: 50px solid $main-color;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+	}
+
+}
+
+
+
+
+
+.side {
+  //background-color:#ff838b;
+  width:50px;
+  height:100vh;
+  text-align:center;
+	opacity: 0;
+	
+} 
+
+.main_content_wrap{
+	@include media-pc {
+		flex-direction: row-reverse;
+		display: flex;
+		transition: all 0.5s ease-out;
+	}
+}
+.main_content{
+	display: flex;
+	@include media-pc {
+		justify-content: end;
+		transition: all 0.5s ease-out;
+	}
+}
+
+.content_base_top{
+	transition: all 0.5s ease-out;
+	margin-right: 0;
+	@include media-pc {
+	width: calc(100% - 50px)!important;
+		transition: all 0.5s ease-out;
+		}
+}
+
+.content_base{
+	transition: all 0.5s ease-out;
+	width:100%;
+	//height:100vh;
+}
+
+
+
+
+.area{
+  overflow: hidden;
+}
+.wrap{
+  display: flex;
+}
+.item{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+	//これつけたらスマホバグるtransition: all 0.5s ease-out;
+}
+.item01{ background-color: rgba(235, 89, 60, 0.5); }
+.item02{ background-color: rgba(171, 220, 214,0.5); }
+.item03{ background-color: rgba(235, 89, 60, 0.5); }
+.item04{ background-color: rgba(171, 220, 214,0.5); }
+.item05{ background-color: rgba(235, 89, 60, 0.5);; }
+.item06{ background-color: rgba(171, 220, 214,0.5); }
+
+
+
+
+
+
+
+.scrolldown4_wrap{
+	    //mix-blend-mode: exclusion;
+}
+
+.scrolldown4{
+    position: absolute;
+    /* left: -13.9rem; */
+    -webkit-animation: arrowmove 1s ease-in-out infinite;
+    animation: arrowmove 1s ease-in-out infinite;
+    z-index: 210;
+    top: 0;
+    right: 0;
+    width: 100%;
+	@include media-sp {
+		left: -0.9rem;
+	}
+	@media screen and (max-width: 320px) {
+		left: 1.1rem;
+	}
+}
+
+@keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+ }
+
+.scrolldown4 span{
+  position: absolute;
+    /* bottom: 110px; */
+    bottom: 190px;
+    color: #FFF;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    right: calc( 50% - 34px );
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+	   content: "";
+    position: absolute;
+    bottom: 170px;
+    right: calc( 50% - 46px );
+    width: 3px;
+    height: 20px;
+    background: #FFF;
+    -webkit-transform: skewX(-31deg);
+    -ms-transform: skewX(-31deg);
+    transform: skewX(-31deg);
+}
+
+.scrolldown4:after{
+  content: "";
+    position: absolute;
+    bottom: 170px;
+    right: calc( 50% - 40px );
+    width: 3px;
+    height: 120px;
+    background: #FFF;
+	@include media-sp {
+		height: 260px;
+	}
+}
+
+
+
+.slant-bg__header {
+    width: 100%;
+    margin: 0;
+    padding: 30px 0 100px;
+    position: relative;
+    top: 0px;
+    overflow: hidden;
+}
+
+
+.slant-bg__header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $main-color;
+    transform: skewY(3deg) translateY(-40px);
+    z-index: -1;
+}
+.slant-bg__header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $base-color;
+    z-index: -2;
+}
+
+
+
+.slant-bg {
+    width: 100%;
+    margin: 0;
+    padding: 150px 0;
+    position: relative;
+    top: 20px;
+}
+
+.slant-bg p {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.slant-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #D1E28A;
+    transform: skewY(-7deg);
+    z-index: -1;
+}
+
+
+.content01{
+  position: relative;
+  width: 100%;
+  background-color: $main-color;
+	&.__normal{
+		padding: 1rem 1rem 7rem;
+	}
+	&.__header{
+		position: relative;
+		height: 140px;
+		padding: 1rem;
+		z-index: 2;
+	}
+}
+
+.content02{
+  position: relative;
+  width: 100%;
+  background-color: $base-color;
+	&.__normal{
+		padding: 1rem 0 1rem;
+	}
+	&.__header{
+		height: 140px;
+		padding: 1rem;
+	}
+}
+
+
+.content01::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right:0;
+  bottom: 0;
+  border-top: 40px solid transparent;    
+  border-right: 50vw solid transparent;    
+  border-left: 50vw solid $base-color;   
+  border-bottom: 60px solid $base-color;  
+}
+@media only screen and (max-width: 2000px) {
+  .content01::after {
+    border-right: 1000px solid transparent;    
+    border-left: 1000px solid $base-color;   
+  }
+}
+
+
+.content02::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right:0;
+  bottom: 0;
+  border-top: 40px solid transparent;    
+  border-right: 50vw solid transparent;    
+  border-left: 50vw solid $main-color;   
+  border-bottom: 60px solid $main-color;  
+}
+@media only screen and (max-width: 2000px) {
+  .content02::after {
+    border-right: 1000px solid transparent;    
+    border-left: 1000px solid $main-color;   
+  }
+}
+
+
+.bg__main{
+	background-color: $main-color;
+}
+.bg__base{
+	background-color: $base-color;
+}
+
+.bg__point{
+	background-color: $point-color;
+}
+
+.header_wrap{
+	    height: 100px;
+	transition: all 0.5s ease-out;
+		@include media-sp {
+		 height:40px;
+			@media screen and (max-width: 320px) {
+				height:40px;
+			}
+	}
+}
+
+.header_ttl{
+	//width: 400px;
+	font-size: 0.8rem;
+	color: #FFF;
+	position: absolute;
+	left: 10px;
+    top: 10px;
+	a{
+		color: #FFF;
+		text-decoration: none;
+	}
+}
+
+.header_pc_menu{
+	//width: 530px;
+	font-weight: bold;
+	position: absolute;
+	right: 30px;
+	top:0;
+	width: 500px;
+	//z-index: 10;
+	p{
+		text-align: center;
+	}
+}
+
+
+/* ---- top ---- */
+.top_main_img{
+	left: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+	
+	margin: 0rem auto;
+	background-image: url(#{$img_path}/common/brain.svg);
+	background-repeat: no-repeat;
+    z-index: 50;
+    /* padding: 19rem 7rem; */
+    background-size: contain;
+    background-position: center;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    top: 20vh;
+	@include media-sp {
+		background-position: top 260px right 0px;
+		    background-size: 55%;
+		height: 100px;
+		top: -5rem;
+	}
+	@media screen and (max-width: 320px) {
+		background-position: top 258px right 12px;
+    top: -2rem;
+}
+}
+
+.top
+
+.top_bg_circle{
+	position: absolute;
+	transform: rotate(6deg);
+	top: 120px;
+}
+
+
+.top_main_bg_margin{
+	margin: -3rem 0;
+}
+
+.top_wave {
+      position: fixed;
+   bottom: 5rem;
+	width: 100%;
+	@include media-sp {
+		    position: absolute;
+    top: 17rem;
+    width: 100%;
+	}
+}
+
+.top_wave canvas {
+  position: absolute;
+  /*bottom: 0;*/
+  left: 0;
+	top:15rem;
+	width: 100%;
+	height: 90px;
+}
+
+.top_ttl_txt--wrap{
+	position: absolute;
+    top: 12rem;
+    left: -14rem;
+	@include media-sp {
+		position: absolute;
+    top: 11rem;
+    left: -1rem;
+}
+	@media screen and (max-width: 320px) {
+		left: 1rem;
+	}
+	
+}
+
+.top_ttl_txt_letter-spacing{
+	   letter-spacing: 26px;
+    font-size: 3rem;
+    line-height: 4rem;
+	@include media-sp {
+		letter-spacing: 16px;
+    font-size: 1.5rem;
+    line-height: 4rem;
+	}
+	@media screen and (max-width: 320px)  {
+    font-size: 1rem;
+	}
+	
+	&.__box1{
+	span{margin: 0 2px 0 12px;
+			    //margin-bottom: -0.8px;
+    //margin-left: 6px;
+		@include media-sp {
+			//margin: 0 10px;
+		}
+		}
+
+	}
+	&.__box2{
+	span{margin: 0 2px 0 12px;
+			//margin-bottom: -4px;
+    //margin-top: 6px;
+		@include media-sp {
+			//margin: 0 10px;
+		}
+		}
+
+	}
+	&.__box3{
+    span{
+		margin: 0 2px 0 12px;
+			//margin-right: -2px;
+		    //margin-left: 6.5px;
+		@include media-sp {
+			//margin: 10 10px;
+		}
+		}
+
+	}
+}
+
+.top_ttl_txt{
+	//background-color: aqua;
+	margin: 0;
+	overflow: hidden;
+	p{
+		margin: 0;
+		font-size: 1rem;
+		@include media-sp {
+			font-size: 2rem;
+		}
+		@media screen and (max-width: 320px)  {
+			font-size: 1.8rem;
+		}
+	}
+	
+	&.__box1{
+		position: absolute;
+    top: -68px;
+    left: 147.5px;
+		@include media-sp {
+			left: 0px;
+		}
+	}
+	&.__box2{
+	position: absolute;
+    top: -44px;
+    left: 147.5px;
+    text-orientation: upright;
+		    writing-mode: vertical-rl;
+		@include media-sp {
+			top: -12px;
+			writing-mode:horizontal-tb;
+			left: 0px;
+		}
+
+	}
+	&.__box3{
+    position: absolute;
+    top: 51px;
+    left: 0;
+		@include media-sp {
+			left: 0px;
+			top: 43px;
+		}
+
+	}
+}
+
+
+
+/*========= 縦書き ===============*/
+.text_tate{
+	writing-mode: vertical-rl;
+}
+
+
+
+
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+
+
+.box{
+    //color: #fff;
+    //padding: 40px;
+	//display:flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: relative;
+}
+#box1{
+    //background: linear-gradient(0deg, rgba(235,89,60,1) 0%, rgba(235,89,60,1) 50%, rgba(255,252,236,1) 50%, rgba(255,252,236,1) 100%);
+}
+#box2{
+    
+}
+#box3{
+    background-color: rgba(235, 89, 70, 0.5);
+}
+#box4{
+    background-color: rgba(235, 89, 60, 0.5);
+}
+
+#footer{
+	background:#333;
+	color:#fff;
+	//padding:40px;
+	text-align:center;
+}
+
+#footer a{
+	color: #fff;
+}
+
+
+.pagination {
+  position:fixed;
+  right:20px;
+  top: 50%;
+    transform: translateY(-50%);
+  font-size:1em;
+  z-index: 10;
+  list-style: none;
+	mix-blend-mode: exclusion;
+}
+
+.pagination a {
+  display:block;
+  height:20px;
+  margin-bottom:5px;
+  color:$base-color;
+  position:relative;
+  padding:4px;
+	mix-blend-mode: exclusion;
+}
+
+.pagination a.active:after {
+  box-shadow:inset 0 0 0 5px;
+}
+
+/*現在地表示のテキストの設定*/
+.pagination a .hover-text {
+  position:absolute;
+  right:15px;
+  top:0;
+  opacity:0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  padding-right: 15px;
+}
+
+.pagination a:hover .hover-text {
+  opacity: 1;
+}
+
+.pagination a:after {
+  -webkit-transition:box-shadow 0.5s ease;
+  transition:box-shadow 0.5s ease;
+  width:10px;
+  height:10px;
+  display: block;
+  border:1px solid;
+  border-radius:50%;
+  content:"";
+  position: absolute;
+  margin:auto;
+  top:0;
+  right:3px;
+  bottom:0;
+}
+
+/*768px以下は現在地表示のテキストを非表示*/
+@media screen and (max-width:768px) { 
+  .pagination a .hover-text{
+    display: none;
+  } 
+}
+
+
+
+
+
+
+
+
+
+.bgextend{
+  animation-name:bgextendAnimeBase;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  position: relative;
+  overflow: hidden;/*　はみ出た色要素を隠す　*/
+  opacity:0;
+	margin: 0;
+    color: #FFF;
+}
+
+@keyframes bgextendAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;  
+}
+}
+
+
+
+/*中の要素*/
+.bgappear{
+  animation-name:bgextendAnimeSecond;
+  animation-duration:1s;
+  animation-delay: 0.6s;
+  animation-fill-mode:forwards;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond{
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+}
+}
+
+/*左から右*/
+.bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $point-color;/*伸びる背景色の設定*/
+	z-index: 10;
+}
+.bgLRextend::after{
+  animation-name:bgLRextendAnime_after;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;/*伸びる背景色の設定*/
+	left: 0;
+	top: 0;
+	//opacity:0;
+	//z-index: 1;
+}
+@keyframes bgLRextendAnime{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+  50.001% {
+    transform-origin:right;
+  }
+  100% {
+    transform-origin:right;
+    transform:scaleX(0);
+  }
+}
+
+@keyframes bgLRextendAnime_after{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+}
+
+
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.bgappearTrigger_1,.bgappearTrigger_2,.bgappearTrigger_3,.bgLRextendTrigger{
+    opacity: 0;
+	position: inherit;
+	z-index: 5;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Loading背景画面設定　*/
+#splash {
+    /*fixedで全面に固定*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background:$main-color;
+  text-align:center;
+  color:#fff;
+}
+
+/* Loading画像中央配置　*/
+#splash_logo {
+         position: relative;
+    width: 100%;
+    height: 100%;
+  //transform: translate(-50%, -50%);
+}
+
+/* Loading アイコンの大きさ設定　*/
+#splash_logo svg{
+    margin: auto;
+    //position: absolute;
+}
+#splash_logo svg path{
+        stroke: $point-color;
+}
+
+
+.front_anime_svg_box{
+    position: absolute;
+    width: 120px;
+    top: 38vh;
+    left: 0;
+    right: 0;
+    height: 100px;
+	margin: auto;
+	@include media-sp {
+		width: 55%;
+    top: 34%;
+    left: 1rem;
+    right: 0;
+	}
+}
+
+/* fadeUpをするアイコンの動き */
+
+#front-anime{
+animation-name: front-anime;
+//animation-duration:0.5s;
+	stroke-dasharray:1600px;
+	animation:front-anime 3s;
+//opacity: 0;
+	animation-fill-mode:backwards;
+}
+
+@keyframes front-anime{
+  0% {
+
+stroke-dashoffset:1600px;
+}
+
+
+100% {
+
+stroke-dashoffset:0px;
+}
+}
+
+
+
+
+
+.st1{
+fill:none;stroke:$font-color__defo;stroke-width:8;stroke-miterlimit:10;}
+
+

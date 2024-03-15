@@ -1,0 +1,49 @@
+/* Scss Document */
+
+/*メデイアクエリブレイクポイント*/
+/* @include media-pc という風に記述する*/
+
+
+@mixin media-pc { /*pc769px以上*/
+			@media all and (min-width:48.0625em){
+				@content;
+  }
+}
+
+@mixin media-sp { /*スマホ 768px以下*/
+			@media (max-width:48em){
+				@content;
+  }
+}
+
+
+/*clearfix*/
+@mixin clearfix {
+    @if $support-ie6 or $support-ie7 {
+      *zoom: 1;
+    }
+    &:after {
+      content: "."; 
+      display: block;
+      clear: both;
+      height: 0; 
+      visibility: hidden;
+    }
+}
+
+
+/*webfont*/
+@mixin fontawesome($set:left, $margin:0.25) {  
+  font:{
+	  family:'FontAwesome';
+	  weight:normal;
+	  style:normal;
+	  size:inherit;
+  }
+  display:inline-block;
+  margin-#{$set}: $margin + rem
+  }
+
+
+
+
