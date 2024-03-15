@@ -37,7 +37,7 @@
 
 	<body class="no-touchdevice is-chrome">
 <section class="Box-pc">
-<div id="cursor" class="c-follower is-blend"><span>View</span></div>
+<div id="cursor" class="c-follower is-blend"></div>
 <div id="pointer" class="c-pointer"></div>
 </section>
 		
