@@ -1,0 +1,28 @@
+.content-tmp-wide{
+	width: 100%;
+	margin: auto;
+}
+
+.content-tmp{
+	width: 1000px;
+	margin: auto;
+	@include media-sp {
+		width: 90%;
+    margin: auto;
+	}
+}
+
+.content-1000wrap{
+	width: 1000px;
+	margin: auto;
+	@include media-sp {
+		width: 90%;
+    margin: auto;
+	}
+}
+
+.content-sp{
+	@include media-sp {
+	width: 90%;
+		margin: auto;
+}}

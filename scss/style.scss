@@ -1,0 +1,20 @@
+/* Scss Document */
+@import "var";
+@import "mixin";
+@import "common/col";
+@import "common/elements";
+@import "common/attention";
+@import "common/margin";
+@import "common/fontsize";
+@import "common/h";
+
+@import "layout/footer";
+@import "layout/header";
+@import "layout/front-page";
+@import "layout/wrap";
+
+@import "parts/link";
+@import "parts/contents";
+@import "parts/works";
+@import "parts/about";
+@import "parts/yokoscroll";
