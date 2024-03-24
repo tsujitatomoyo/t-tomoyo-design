@@ -6,7 +6,7 @@
 	
   <footer class="contents-footer">
     <section class="section">
-    <p class="copyright">© 2022 TSUJITA TOMOYO.</p>
+    <p class="copyright">© 2024 TSUJITA TOMOYO.</p>
     <section>
   </section></section></footer>
 <?php wp_footer(); ?>
